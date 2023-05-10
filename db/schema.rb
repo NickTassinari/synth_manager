@@ -10,18 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_10_175721) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_10_214030) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "country_of_origin"
+    t.boolean "active"
+    t.integer "years_in_operation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "synths", force: :cascade do |t|
     t.string "name"
     t.boolean "polyphony"
     t.integer "number_of_voices"
     t.string "production_years"
-    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_synths_on_company_id"
   end
 
+  add_foreign_key "synths", "companies"
 end

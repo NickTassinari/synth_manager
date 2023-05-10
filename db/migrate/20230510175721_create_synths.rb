@@ -5,7 +5,6 @@ class CreateSynths < ActiveRecord::Migration[7.0]
       t.boolean :polyphony
       t.integer :number_of_voices
       t.string :production_years
-      t.integer :company_id
 
       t.timestamps
     end
