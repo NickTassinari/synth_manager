@@ -1,0 +1,7 @@
+<h1>Roland Synthesizers</h1>
+<% @synths.each do |synth| %>
+<h2><%= synth.name %></h2>
+<p>Polyphony?: <%= synth.polyphony %></p>
+<p>Number of Voices: <%= synth.number_of_voices %></p>
+<p>Production Years: <%= synth.production_years %></p>
+<% end %>
