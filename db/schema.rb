@@ -30,8 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_214030) do
     t.string "production_years"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    # t.bigint "company_id"
-    # t.index ["company_id"], name: "index_synths_on_company_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_synths_on_company_id"
   end
 
   add_foreign_key "synths", "companies"
