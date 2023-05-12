@@ -1,0 +1,9 @@
+<h1><%= @company.name %></h1>
+<% @synths.each do |synth| %>
+<h3><%= synth.name %></h3>
+<p>Polyphony: <%= synth.polyphony %></p>
+<p>Number of Voices: <%= synth.number_of_voices %></p>
+<p>Production Years: <%= synth.production_years %></p>
+<p>Synth ID: <%= synth.id %></p>
+<p>Company ID: <%= synth.company_id %></p>
+<% end %>

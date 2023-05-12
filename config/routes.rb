@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/companies/:id', to: 'companies#show'
   get '/synths', to: 'synths#index'
   get '/synths/:id', to: 'synths#show'
+  get 'companies/:company_id/synths', to: 'companies/synths#index'
 end
