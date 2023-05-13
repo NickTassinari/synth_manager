@@ -3,3 +3,4 @@
 <p>Active?: <%= @company.active %></p>
 <p>Years in Operation: <%= @company.years_in_operation %></p>
 <p>Number of Synths: <%= @company.synths.count %></p>
+<a href ="/companies/<%="#{@company.id}"%>/synths"><%="#{@company.name}"%> Synthesizers</a>
