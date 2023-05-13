@@ -27,4 +27,30 @@ RSpec.describe 'application layout view' do
     end
   end 
 
+  # User Story 9, Parent Index Link
+
+  # As a visitor
+  # When I visit any page on the site
+  # Then I see a link at the top of the page that takes me to the Parent Index    
+
+  describe 'link to companies index' do 
+    it 'can visit any page on the site and see companies index at the top' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+
+      visit "/synths"
+      expect(page).to have_link("All Companies")
+
+      click_link("All Companies")
+      expect(current_path).to eq("/companies")
+
+      visit "/synths/#{synth.id}"
+      expect(page).to have_content("All Companies")
+
+      click_link("All Companies")
+      expect(current_path).to eq("/companies")
+    end
+  end 
+
 end
