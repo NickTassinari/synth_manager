@@ -35,7 +35,28 @@ RSpec.describe '/company/:id page' do
       visit "/companies/#{company.id}"
       expect(page).to have_content("Number of Synths: #{company.synths.count}")
     end
+    
+    # User Story 10, Parent Child Index Link
+
+    # As a visitor
+    # When I visit a parent show page ('/parents/:id')
+    # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+
+    it 'can link to child table index of company' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      company_2 = Company.create!(name: 'Moog', country_of_origin: "US", active: true, years_in_operation: 70)
+      synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+
+      visit "/companies/#{company.id}"
+      expect(page).to have_link("#{company.name} Synthesizers")
+
+      click_link("#{company.name} Synthesizers")
+      expect(current_path).to eq("/companies/#{company.id}/synths")
+    end
+  
   end
+
 
 
 
