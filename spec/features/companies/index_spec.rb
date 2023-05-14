@@ -36,4 +36,5 @@ RSpec.describe 'Company Index Page' do
       expect(company.name).to appear_before(company_3.name)
     end
   end
+
 end
