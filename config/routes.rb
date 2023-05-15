@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/companies', to: 'companies#index'
   get '/companies/new', to: 'companies#new'
   post '/companies', to: 'companies#create'
+  get '/companies/:id/edit', to: 'companies#edit'
+  patch '/companies/:id', to: 'companies#update'
   get '/companies/:id', to: 'companies#show'
   get 'companies/:company_id/synths', to: 'companies/synths#index'
   get '/synths', to: 'synths#index'
