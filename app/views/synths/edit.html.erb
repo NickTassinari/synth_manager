@@ -1,0 +1,14 @@
+<%= form_with url: "/synths/#{@synth.id}", method: :patch, local: true do |form| %>
+  <p><%= form.label :name %></p>
+  <p><%= form.text_field :name %></p>
+  <p><%= form.label :polyphony %></p>
+  <p><%= form.radio_button :polyphony, true %>
+  <%= form.label :polyphony_true, "True" %>
+  <%= form.radio_button :polyphony, false %>
+  <%= form.label :polyphony_false, "False" %>
+  <p><%= form.label :number_of_voices %></p>
+  <p><%= form.text_field :number_of_voices %></p>
+  <p><%= form.label :production_years %></p>
+  <p><%= form.text_field :production_years %></p>
+  <%= form.submit "Update Synth" %>
+<% end %>

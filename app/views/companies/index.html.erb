@@ -1,5 +1,6 @@
 <h1>List of Synthesizer Companies</h1>
 <% @companies.each do |company| %>
-<h3><%= company.name %> <%= button_to "Edit #{company.name}", "/companies/#{company.id}/edit", method: :get %></h3>
+<h3><%= link_to "#{company.name}", "/companies/#{company.id}", method: :get %> </h3>
+<%= button_to "Edit #{company.name}", "/companies/#{company.id}/edit", method: :get %>
 <% end %>
 <%= link_to "New Company", "/companies/new" %>

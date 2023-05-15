@@ -4,7 +4,10 @@
   <p><%= form.label :country_of_origin %></p>
   <p><%= form.text_field :country_of_origin %></p>
   <p><%= form.label :active %></p>
-  <p><%= form.text_field :active %></p>
+  <p><%= form.radio_button :active, true %>
+  <%= form.label :active_true, "True" %>
+  <%= form.radio_button :active, false %>
+  <%= form.label :active_true, "False" %>
   <p><%= form.label :years_in_operation %></p>
   <p><%= form.text_field :years_in_operation %></p>
 
