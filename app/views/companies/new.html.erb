@@ -1,5 +1,12 @@
-<%= form_with url: '/companies', method: :post, local: true do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.submit "Create Company" %>
+<p><%= form_with url: '/companies', method: :post, local: true do |form| %></p>
+  <p><%= form.label :name %></p>
+  <p><%= form.text_field :name %></p>
+  <p><%= form.label :country_of_origin %></p>
+  <p><%= form.text_field :country_of_origin %></p>
+  <p><%= form.label :active %></p>
+  <p><%= form.text_field :active %></p>
+  <p><%= form.label :years_in_operation %></p>
+  <p><%= form.text_field :years_in_operation %></p>
+
+  <p><%= form.submit "Create Company" %></p>
 <% end %>

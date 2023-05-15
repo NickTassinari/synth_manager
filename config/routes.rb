@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   patch '/companies/:id', to: 'companies#update'
   get '/companies/:id', to: 'companies#show'
   get 'companies/:company_id/synths', to: 'companies/synths#index'
+  get '/companies/:id/synths/new', to: 'companies/synths#new'
+  post '/companies/:id/synths', to: 'companies/synths#create'
   get '/synths', to: 'synths#index'
   get '/synths/:id', to: 'synths#show'
 end
