@@ -15,6 +15,16 @@ class CompaniesController < ApplicationController
     redirect_to '/companies'
   end
 
+  def edit 
+    @company = Company.find(params[:id])
+  end
+
+  def update 
+    company = Company.find(params[:id])
+    company.update(company_params)
+    redirect_to '/companies'
+  end
+
   def show 
     @company = Company.find(params[:id])
   end
