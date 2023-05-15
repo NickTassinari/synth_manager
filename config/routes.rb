@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'companies/:company_id/synths', to: 'companies/synths#index'
   get '/companies/:id/synths/new', to: 'companies/synths#new'
   post '/companies/:id/synths', to: 'companies/synths#create'
+  get '/synths/:id/edit', to: 'synths#edit'
+  patch '/synths/:id', to: 'synths#update'
   get '/synths', to: 'synths#index'
   get '/synths/:id', to: 'synths#show'
 end

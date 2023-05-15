@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'edit company' do 
   describe 'Edit Company' do 
-    before(:each) {@company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)}
+    let(:company) {Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)}
     # User Story 12, Parent Update 
 
     # As a visitor
@@ -18,8 +18,7 @@ RSpec.describe 'edit company' do
     xit 'links to edit page from parent show page' do 
       
       visit '/companies'
-      
-      click_button "Edit #{@company.name}"
+      click_button "Edit #{company.name}"
 
       expect(current_path).to eq("/companies/#{company.id}/edit")
     end

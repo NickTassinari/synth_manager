@@ -1,5 +1,5 @@
 <% @synths.each do |synth| %>
-<h1><%= synth.name %></h1>
+<h1><%= link_to "#{synth.name}", "/synths/#{synth.id}", method: :get %></h1>
 <p>Polyphony?: <%= synth.polyphony %></p>
 <p>Number of Voices: <%= synth.number_of_voices %></p>
 <p>Production Years: <%= synth.production_years %></p>
