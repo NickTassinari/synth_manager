@@ -1,0 +1,11 @@
+<%= form_with url: "/companies/#{@company.id}/synths", method: :post, local: true do |form|%>
+  <p><%= form.label :name %></p>
+  <p><%= form.text_field :name %></p>
+  <p><%= form.label :polyphony %></p>
+  <p><%= form.text_field :polyphony %></p>
+  <p><%= form.label :number_of_voices %></p>
+  <p><%= form.text_field :number_of_voices %></p>
+  <p><%= form.label :production_years %></p>
+  <p><%= form.text_field :production_years %></p>
+  <p><%= form.submit "Add Synth" %>
+<% end %>
