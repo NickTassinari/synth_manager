@@ -29,6 +29,12 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
   end
 
+  def destroy
+    company = Company.find(params[:id])
+    company.destroy
+    redirect_to '/companies'
+  end
+
   private 
   def company_params
     params.permit(:name, :country_of_origin, :active, :years_in_operation)
