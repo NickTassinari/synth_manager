@@ -1,6 +1,6 @@
 <h1>List of Synthesizer Companies</h1>
 <% @companies.each do |company| %>
-<h3><%= link_to "#{company.name}", "/companies/#{company.id}", method: :get %> </h3>
+<h2><%= link_to "#{company.name}", "/companies/#{company.id}", method: :get %> </h2>
 <p><%= button_to "Edit #{company.name}", "/companies/#{company.id}/edit", method: :get %></p>
 <p><%= button_to "Delete #{company.name}", "/companies/#{company.id}", method: :delete %></p>
 <% end %>
