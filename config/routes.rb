@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   patch '/synths/:id', to: 'synths#update'
   get '/synths', to: 'synths#index'
   get '/synths/:id', to: 'synths#show'
+  delete '/synths/:id', to: 'synths#destroy'
   
 end
