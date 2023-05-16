@@ -37,4 +37,31 @@ RSpec.describe 'Company Index Page' do
     end
   end
 
+  # User Story 17, Parent Update From Parent Index Page 
+
+  # As a visitor
+  # When I visit the parent index page
+  # Next to every parent, I see a link to edit that parent's info
+  # When I click the link
+  # I should be taken to that parent's edit page where I can update its information just like in User Story 12
+  describe 'update company' do 
+    it 'has an edit link next to every company' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      visit "/companies/#{company.id}"
+      click_button "Edit #{company.name}"
+
+      expect(current_path).to eq("/companies/#{company.id}/edit")
+
+    end
+
+    it 'can edit the company' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      visit "/companies/#{company.id}/edit"
+      fill_in "Name", with: "Boland Corporation"
+      click_button "Update Company"
+
+      expect(current_path).to eq('/companies')
+      expect(page).to have_content("Boland Corporation")
+    end
+  end
 end

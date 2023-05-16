@@ -39,4 +39,27 @@ RSpec.describe '/companies/:company_id/synths' do
 
     end
   end
+
+  # User Story 16, Sort Parent's Children in Alphabetical Order by name 
+
+  # As a visitor
+  # When I visit the Parent's children Index Page
+  # Then I see a link to sort children in alphabetical order
+  # When I click on the link
+  # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+  describe 'parents children in alphabetical order' do 
+    xit 'can sort synths in alphabetical order' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      synth_3 = company.synths.create!(name: 'D 50', polyphony: true, number_of_voices: 32, production_years: "1987")
+    
+      expect(synth.name).to appear_before(synth_3.name)
+
+      visit "/companies/#{company.id}/synths"
+
+      expect(synth_3.name).to appear_before(synth.name)
+    end
+  end
+  
 end
