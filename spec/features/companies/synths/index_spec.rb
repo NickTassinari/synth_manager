@@ -61,5 +61,30 @@ RSpec.describe '/companies/:company_id/synths' do
       expect(synth_3.name).to appear_before(synth.name)
     end
   end
+
+  # User Story 21, Display Records Over a Given Threshold 
+
+  # As a visitor
+  # When I visit the Parent's children Index Page
+  # I see a form that allows me to input a number value
+  # When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+  # Then I am brought back to the current index page with only the records that meet that threshold shown.
+
+  xit 'has a form to input a value to return a certain number of records' do 
+    company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+    synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+    synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+    synth_3 = company.synths.create!(name: 'D 50', polyphony: true, number_of_voices: 32, production_years: "1987")
+    
+    visit "/companies/#{company.id}/synths"
+
+    fill_in(:number_of_voices, with: 30)
+    click_button "Return Synths with voice count more than this"
+
+    expect(current_path).to eq("/companies/#{company.id}/synths")
+    expect(page).to have_content(synth_3.name)
+    expect(page).to_not have_content(synth.name)
+    expect(page).to_not have_content(synth_2.name)
+  end
   
 end

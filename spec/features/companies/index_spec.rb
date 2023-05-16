@@ -64,4 +64,16 @@ RSpec.describe 'Company Index Page' do
       expect(page).to have_content("Boland Corporation")
     end
   end
+
+  describe 'delete company' do 
+    it 'can delete company' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+
+      visit "/companies"
+      click_button "Delete #{company.name}"
+
+      expect(current_path).to eq("/companies")
+      expect(page).to_not have_content("#{company.name}")
+    end
+  end
 end
