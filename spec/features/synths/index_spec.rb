@@ -49,9 +49,9 @@ RSpec.describe "synths index page" do
   # When I click the link
   # I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 14
   describe 'edit synth' do 
-    xit 'links to edit synth page' do 
+    it 'links to edit synth page' do 
       @company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
-      @synth = @company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      @synth = @company.synths.create!(name: 'SH 101', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
 
       visit "/synths"
       click_button "Edit #{@synth.name}"
@@ -60,7 +60,7 @@ RSpec.describe "synths index page" do
 
     it 'can edit the synth' do 
       @company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
-      @synth = @company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      @synth = @company.synths.create!(name: 'SH 101', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
 
       visit "/synths/#{@synth.id}/edit"
       fill_in("Name", with: "Juno 60")

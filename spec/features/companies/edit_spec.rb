@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'edit company' do 
   describe 'Edit Company' do 
-    let(:company) {Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)}
     # User Story 12, Parent Update 
 
     # As a visitor
@@ -15,7 +14,8 @@ RSpec.describe 'edit company' do
     # Then a `PATCH` request is sent to '/parents/:id',
     # the parent's info is updated,
     # and I am redirected to the Parent's Show page where I see the parent's updated info
-    xit 'links to edit page from parent show page' do 
+    it 'links to edit page from parent show page' do 
+      company = Company.create!(name: 'Korg', country_of_origin: 'Japan', active: true, years_in_operation: 51)
       
       visit '/companies'
       click_button "Edit #{company.name}"
@@ -36,6 +36,6 @@ RSpec.describe 'edit company' do
 
       expect(current_path).to eq('/companies')
       expect(page).to have_content("Roland Corporation")
-    end
-  end 
+    end 
+  end
 end

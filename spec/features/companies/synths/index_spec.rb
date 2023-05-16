@@ -95,10 +95,10 @@ RSpec.describe '/companies/:company_id/synths' do
   # When I click the link
   # I should be taken to the `child_table_name` index page where I no longer see that child
   
-  xit 'can delete synth from index page' do 
-    company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
-    synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
-    synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+  it 'can delete synth from index page' do 
+    company = Company.create!(name: 'Fender', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+    synth = company.synths.create!(name: 'SH 101', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+    synth_2 = company.synths.create!(name: 'JP X8', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
 
     visit "/companies/#{company.id}/synths"
 
