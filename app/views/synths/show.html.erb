@@ -4,3 +4,4 @@
 <p>Number of Voices: <%= @synth.number_of_voices %></p>
 <p>Production Years: <%= @synth.production_years %></p>
 <p><%= button_to "Edit Synth", "/synths/#{@synth.id}/edit", method: :get %></p>
+<p><%= link_to "Delete #{@synth.name}", "/synths/#{@synth.id}", method: :delete %></p>

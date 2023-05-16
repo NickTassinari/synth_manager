@@ -19,9 +19,9 @@ class SynthsController < ApplicationController
   end
 
   def destroy 
-    @synth = Synth.find(params[:id])
-    @synth.destroy 
-    redirect_to 
+    synth = Synth.find(params[:id])
+    synth.destroy 
+    redirect_to "/synths"
   end
 
   private
