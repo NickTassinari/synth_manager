@@ -86,5 +86,25 @@ RSpec.describe '/companies/:company_id/synths' do
     expect(page).to_not have_content(synth.name)
     expect(page).to_not have_content(synth_2.name)
   end
+
+  # User Story 23, Child Delete From Childs Index Page 
+
+  # As a visitor
+  # When I visit the `child_table_name` index page or a parent `child_table_name` index page
+  # Next to every child, I see a link to delete that child
+  # When I click the link
+  # I should be taken to the `child_table_name` index page where I no longer see that child
   
+  xit 'can delete synth from index page' do 
+    company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+    synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+    synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+
+    visit "/companies/#{company.id}/synths"
+
+    click_button "Delete #{synth.name}"
+
+    expect(current_path).to eq("/synths")
+    expect(page).to_not have_content("#{synth.name}")
+  end
 end
