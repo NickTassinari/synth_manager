@@ -4,5 +4,7 @@
 <p>Polyphony?: <%= synth.polyphony %></p>
 <p>Number of Voices: <%= synth.number_of_voices %></p>
 <p>Production Years: <%= synth.production_years %></p>
+<p><%= button_to "Edit #{synth.name}", "/synths/#{synth.id}/edit", method: :get %></p>
+
 <% end %>
 <% end %>

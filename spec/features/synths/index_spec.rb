@@ -41,4 +41,34 @@ RSpec.describe "synths index page" do
       expect(page).to have_content(synth_2.name)
     end
   end
+  # User Story 18, Child Update From Childs Index Page 
+
+  # As a visitor
+  # When I visit the `child_table_name` index page or a parent `child_table_name` index page
+  # Next to every child, I see a link to edit that child's info
+  # When I click the link
+  # I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 14
+  describe 'edit synth' do 
+    xit 'links to edit synth page' do 
+      @company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      @synth = @company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+
+      visit "/synths"
+      click_button "Edit #{@synth.name}"
+      expect(current_path).to eq("/synths/#{@synth.id}/edit")
+    end
+
+    it 'can edit the synth' do 
+      @company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      @synth = @company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+
+      visit "/synths/#{@synth.id}/edit"
+      fill_in("Name", with: "Juno 60")
+
+      click_button "Update Synth"
+
+      expect(current_path).to eq("/synths/#{@synth.id}")
+      expect(page).to have_content("Juno 60")
+    end
+  end
 end
