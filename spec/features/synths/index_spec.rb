@@ -28,4 +28,17 @@ RSpec.describe "synths index page" do
       expect(page).to have_content("Production Years: #{synth_2.production_years}")
     end
   end
+
+  describe 'child index shows true records only' do 
+    it 'can only see polyphonic synths on the child index' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+
+      visit "/synths"
+
+      expect(page).to have_content(synth.name)
+      expect(page).to have_content(synth_2.name)
+    end
+  end
 end
