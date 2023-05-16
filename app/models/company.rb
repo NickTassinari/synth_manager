@@ -1,3 +1,3 @@
 class Company < ApplicationRecord 
-  has_many :synths
+  has_many :synths, dependent: :destroy 
 end

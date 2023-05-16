@@ -55,6 +55,27 @@ RSpec.describe '/company/:id page' do
       expect(current_path).to eq("/companies/#{company.id}/synths")
     end
   
+    # User Story 19, Parent Delete 
+
+    # As a visitor
+    # When I visit a parent show page
+    # Then I see a link to delete the parent
+    # When I click the link "Delete Parent"
+    # Then a 'DELETE' request is sent to '/parents/:id',
+    # the parent is deleted, and all child records are deleted
+    # and I am redirected to the parent index page where I no longer see this parent
+
+    xit 'can has a delete link for each company' do 
+      company = Company.create!(name: 'Roland Corporation', country_of_origin: 'Japan', active: true, years_in_operation: 51)
+      synth = company.synths.create!(name: 'Juno 106', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+      synth_2 = company.synths.create!(name: 'Juno 60', polyphony: true, number_of_voices: 6, production_years: "1984-1988")
+
+      visit "/companies/#{company.id}"
+      click_link "Delete #{company.name}"
+
+      expect(current_path).to eq("/companies")
+      expect(page).to_not have_content(company.name)
+    end
   end
 
 
